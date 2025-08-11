@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Singleton
+namespace _01_Singleton
 {
     internal class Program
     {

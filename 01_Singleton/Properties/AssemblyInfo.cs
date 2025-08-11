@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("Singleton")]
+[assembly: AssemblyTitle("01_Singleton")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Singleton")]
+[assembly: AssemblyProduct("01_Singleton")]
 [assembly: AssemblyCopyright("Copyright ©  2025")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("3fcfc434-fe34-4e99-8d4c-9c40f5e54e8d")]
+[assembly: Guid("bba347af-5ab4-4f72-84d7-40a6768ca876")]
 
 // 程序集的版本信息由下列四个值组成: 
 //
