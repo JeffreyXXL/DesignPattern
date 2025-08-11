@@ -19,8 +19,8 @@ namespace Singleton
             CheckInstance(instance1, instance2);
 
             //2、懒汉式加载
-            var lazyInstance1 = Singleton_Lazy.GetInstance();
-            var lazyInstance2 = Singleton_Lazy.GetInstance();
+            var lazyInstance1 = Singleton_Lazy_DoubleCheck.GetInstance();
+            var lazyInstance2 = Singleton_Lazy_DoubleCheck.GetInstance();
             CheckInstance(lazyInstance1, lazyInstance2);
 
             //3、饿汉式加载
@@ -59,9 +59,9 @@ namespace Singleton
         /// <param name="obj2"></param>
         private static void CheckInstance(object obj1, object obj2)
         {
-            Console.WriteLine("*****************************************************");
+            Console.WriteLine($"************************【{obj1.GetType().Name}】************************");
             //检查是不是同一个实例
-            Console.WriteLine($"{obj1.GetType().Name}两个实例是否是相同实例：{object.ReferenceEquals(obj1, obj2)}");
+            Console.WriteLine($"两个实例是否是相同实例：{object.ReferenceEquals(obj1, obj2)}");
             //查看哈希地址
             int hash1 = RuntimeHelpers.GetHashCode(obj1);
             int hash2 = RuntimeHelpers.GetHashCode(obj2);
@@ -69,11 +69,11 @@ namespace Singleton
             Console.WriteLine($"obj2 的哈希地址是{hash2}");
             if (hash1 == hash2)
             {
-                Console.WriteLine($"********** obj1 和 obj2 的哈希地址一致");
+                Console.WriteLine($"********** obj1 和 obj2 的哈希地址相同");
             }
             else
             {
-                Console.WriteLine($"********** obj1 和 obj2 的哈希地址不一致");
+                Console.WriteLine($"********** obj1 和 obj2 的哈希地址不同");
             }
             Console.WriteLine("");
         }
