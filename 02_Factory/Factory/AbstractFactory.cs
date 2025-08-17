@@ -33,7 +33,7 @@ namespace _02_Factory
 
         public IIO CreateIO()
         {
-            return new InovanceIO();
+            return new MutsubishiIO();
         }
     }
 }
