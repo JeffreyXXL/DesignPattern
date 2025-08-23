@@ -60,12 +60,12 @@ namespace _02_Factory
             _factory = new InovanceFactory();
             var axis21 = _factory.CreateAxis();
             var io1 = _factory.CreateIO();
-            axis11.DoSth();
+            axis21.DoSth();
             io1.DoSth();
             _factory = new MutsubishiFactory();
             var axis22 = _factory.CreateAxis();
             var io2 = _factory.CreateIO();
-            axis12.DoSth();
+            axis22.DoSth();
             io2.DoSth();
 
             Console.ReadLine();
