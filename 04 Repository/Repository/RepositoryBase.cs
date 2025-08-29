@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _04_Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -9,39 +10,47 @@ namespace _04_Repository
 {
     public class RepositoryBase<T> : IRepository<T> where T : class, IEntity, new()
     {
-        public Task<bool> DeleteByIdAsync(int id)
+        public RepositoryBase(DbContext dbContext)
         {
-            throw new NotImplementedException();
+            _dbContext = dbContext;
         }
 
-        public Task<int> InsertAsync(T entity)
+        protected readonly DbContext _dbContext;
+
+        public virtual Task<T> QueryByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return _dbContext.Db.Queryable<T>().InSingleAsync(id);
         }
 
-        public Task<List<T>> QueryAllAsync()
+        public virtual Task<int> InsertAsync(T entity)
         {
-            throw new NotImplementedException();
+            return _dbContext.Db.Insertable(entity).ExecuteCommandAsync();
         }
 
-        public Task<List<T>> QueryAsync(Expression<Func<T, bool>> expression)
+        public virtual async Task<bool> UpdateAsync(T entity)
         {
-            throw new NotImplementedException();
+            return await _dbContext.Db.Updateable(entity).ExecuteCommandAsync() > 0;
         }
 
-        public Task<T> QueryByIdAsync(int id)
+        public virtual async Task<bool> DeleteByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _dbContext.Db.Deleteable<T>(id).ExecuteCommandAsync() > 0;
         }
 
-        public Task<T> QuerySingleAsync(Expression<Func<T, bool>> expression)
+        public virtual Task<List<T>> QueryAllAsync()
         {
-            throw new NotImplementedException();
+            return _dbContext.Db.Queryable<T>().ToListAsync();
         }
 
-        public Task<bool> UpdateAsync(T entity)
+        public virtual Task<List<T>> QueryAsync(Expression<Func<T, bool>> expression)
         {
-            throw new NotImplementedException();
+            return _dbContext.Db.Queryable<T>().Where(expression).ToListAsync();
         }
+
+        public virtual Task<T> QuerySingleAsync(Expression<Func<T, bool>> expression)
+        {
+            return _dbContext.Db.Queryable<T>().Where(expression).SingleAsync();
+        }
+
     }
 }
